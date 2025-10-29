@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html class="light" lang="ja"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ゲームランキング</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#FF6F00",
+            "background-light": "#FFFFFF",
+            "background-dark": "#121212",
+            "surface-light": "#F5F5F7",
+            "surface-dark": "#1e1e1e",
+            "text-primary-light": "#212121",
+            "text-primary-dark": "#FFFFFF",
+            "text-secondary-light": "#757575",
+            "text-secondary-dark": "#a0a0a0",
+          },
+          fontFamily: {
+            "display": ["Plus Jakarta Sans", "Noto Sans JP", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+          animation: {
+            'fall': 'fall 15s linear infinite',
+          },
+          keyframes: {
+            fall: {
+              '0%': { transform: 'translateY(-150px) rotate(0deg)' },
+              '100%': { transform: 'translateY(calc(100vh + 150px)) rotate(360deg)' },
+            }
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
+<div class="absolute w-full h-full overflow-hidden">
+<div class="absolute top-0 left-[5%] w-16 h-16 animate-fall" style="animation-delay: -2s; animation-duration: 22s;">
+<svg class="w-full h-full opacity-20 dark:opacity-10" viewBox="0 0 100 66" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#FF6F00" stroke-width="3">
+<path d="M72,13.25a24.25,24.25,0,0,0-46.42,7.5H19a17.25,17.25,0,0,0-2.31,34.33l.25.12h6.81a24.21,24.21,0,0,0,4.5,5H19A19.25,19.25,0,0,1,1,41.44a19.42,19.42,0,0,1,1-3.69C4.54,26.47,11,18.25,19,18.25h6.58A24.25,24.25,0,0,1,72,13.25Z" fill="#FFFFFF"></path>
+<path d="M28,51.75a24.25,24.25,0,0,0,46.42-7.5H81a17.25,17.25,0,0,0,2.31-34.33l-.25-.12H76.25a24.21,24.21,0,0,0-4.5-5H81A19.25,19.25,0,0,1,99,22.56a19.42,19.42,0,0,1-1,3.69c-2.54,11.28-9,19.5-17,19.5H74.42A24.25,24.25,0,0,1,28,51.75Z" fill="#FFFFFF"></path>
+<rect fill="#FFFFFF" height="27.5" rx="12" width="49" x="25.5" y="36.75"></rect>
+<g fill="#FFFFFF">
+<path d="M30,30.75h-7.5v-7.5h-5v7.5h-7.5v5h7.5v7.5h5v-7.5h7.5Z"></path>
+<circle cx="70" cy="27.25" r="5"></circle>
+<circle cx="79" cy="35.75" r="5"></circle>
+<circle cx="37" cy="49.75" r="3.5"></circle>
+<circle cx="63" cy="49.75" r="3.5"></circle>
+<path d="M46.75,19.75a3,3,0,0,1,3-3h1.5a3,3,0,0,1,3,3v-1.5h-7.5Z"></path>
+<path d="M53.25,19.75a3,3,0,0,0-3-3h-1.5a3,3,0,0,0-3,3v-1.5h7.5Z" transform="translate(98.5 38) rotate(180)"></path>
+</g>
+</g>
+</svg>
+</div>
+<div class="absolute top-0 left-[20%] w-24 h-24 animate-fall" style="animation-delay: -5s; animation-duration: 28s;">
+<svg class="w-full h-full opacity-20 dark:opacity-10" viewBox="0 0 100 66" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#FF6F00" stroke-width="3">
+<path d="M72,13.25a24.25,24.25,0,0,0-46.42,7.5H19a17.25,17.25,0,0,0-2.31,34.33l.25.12h6.81a24.21,24.21,0,0,0,4.5,5H19A19.25,19.25,0,0,1,1,41.44a19.42,19.42,0,0,1,1-3.69C4.54,26.47,11,18.25,19,18.25h6.58A24.25,24.25,0,0,1,72,13.25Z" fill="#FFFFFF"></path>
+<path d="M28,51.75a24.25,24.25,0,0,0,46.42-7.5H81a17.25,17.25,0,0,0,2.31-34.33l-.25-.12H76.25a24.21,24.21,0,0,0-4.5-5H81A19.25,19.25,0,0,1,99,22.56a19.42,19.42,0,0,1-1,3.69c-2.54,11.28-9,19.5-17,19.5H74.42A24.25,24.25,0,0,1,28,51.75Z" fill="#FFFFFF"></path>
+<rect fill="#FFFFFF" height="27.5" rx="12" width="49" x="25.5" y="36.75"></rect>
+<g fill="#FFFFFF">
+<path d="M30,30.75h-7.5v-7.5h-5v7.5h-7.5v5h7.5v7.5h5v-7.5h7.5Z"></path>
+<circle cx="70" cy="27.25" r="5"></circle>
+<circle cx="79" cy="35.75" r="5"></circle>
+<circle cx="37" cy="49.75" r="3.5"></circle>
+<circle cx="63" cy="49.75" r="3.5"></circle>
+<path d="M46.75,19.75a3,3,0,0,1,3-3h1.5a3,3,0,0,1,3,3v-1.5h-7.5Z"></path>
+<path d="M53.25,19.75a3,3,0,0,0-3-3h-1.5a3,3,0,0,0-3,3v-1.5h7.5Z" transform="translate(98.5 38) rotate(180)"></path>
+</g>
+</g>
+</svg>
+</div>
+<div class="absolute top-0 left-[35%] w-12 h-12 animate-fall" style="animation-delay: -1s; animation-duration: 30s;">
+<svg class="w-full h-full opacity-20 dark:opacity-10" viewBox="0 0 100 66" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#FF6F00" stroke-width="3">
+<path d="M72,13.25a24.25,24.25,0,0,0-46.42,7.5H19a17.25,17.25,0,0,0-2.31,34.33l.25.12h6.81a24.21,24.21,0,0,0,4.5,5H19A19.25,19.25,0,0,1,1,41.44a19.42,19.42,0,0,1,1-3.69C4.54,26.47,11,18.25,19,18.25h6.58A24.25,24.25,0,0,1,72,13.25Z" fill="#FFFFFF"></path>
+<path d="M28,51.75a24.25,24.25,0,0,0,46.42-7.5H81a17.25,17.25,0,0,0,2.31-34.33l-.25-.12H76.25a24.21,24.21,0,0,0-4.5-5H81A19.25,19.25,0,0,1,99,22.56a19.42,19.42,0,0,1-1,3.69c-2.54,11.28-9,19.5-17,19.5H74.42A24.25,24.25,0,0,1,28,51.75Z" fill="#FFFFFF"></path>
+<rect fill="#FFFFFF" height="27.5" rx="12" width="49" x="25.5" y="36.75"></rect>
+<g fill="#FFFFFF">
+<path d="M30,30.75h-7.5v-7.5h-5v7.5h-7.5v5h7.5v7.5h5v-7.5h7.5Z"></path>
+<circle cx="70" cy="27.25" r="5"></circle>
+<circle cx="79" cy="35.75" r="5"></circle>
+<circle cx="37" cy="49.75" r="3.5"></circle>
+<circle cx="63" cy="49.75" r="3.5"></circle>
+<path d="M46.75,19.75a3,3,0,0,1,3-3h1.5a3,3,0,0,1,3,3v-1.5h-7.5Z"></path>
+<path d="M53.25,19.75a3,3,0,0,0-3-3h-1.5a3,3,0,0,0-3,3v-1.5h7.5Z" transform="translate(98.5 38) rotate(180)"></path>
+</g>
+</g>
+</svg>
+</div>
+<div class="absolute top-0 left-[50%] w-20 h-20 animate-fall" style="animation-delay: -7s; animation-duration: 25s;">
+<svg class="w-full h-full opacity-20 dark:opacity-10" viewBox="0 0 100 66" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#FF6F00" stroke-width="3">
+<path d="M72,13.25a24.25,24.25,0,0,0-46.42,7.5H19a17.25,17.25,0,0,0-2.31,34.33l.25.12h6.81a24.21,24.21,0,0,0,4.5,5H19A19.25,19.25,0,0,1,1,41.44a19.42,19.42,0,0,1,1-3.69C4.54,26.47,11,18.25,19,18.25h6.58A24.25,24.25,0,0,1,72,13.25Z" fill="#FFFFFF"></path>
+<path d="M28,51.75a24.25,24.25,0,0,0,46.42-7.5H81a17.25,17.25,0,0,0,2.31-34.33l-.25-.12H76.25a24.21,24.21,0,0,0-4.5-5H81A19.25,19.25,0,0,1,99,22.56a19.42,19.42,0,0,1-1,3.69c-2.54,11.28-9,19.5-17,19.5H74.42A24.25,24.25,0,0,1,28,51.75Z" fill="#FFFFFF"></path>
+<rect fill="#FFFFFF" height="27.5" rx="12" width="49" x="25.5" y="36.75"></rect>
+<g fill="#FFFFFF">
+<path d="M30,30.75h-7.5v-7.5h-5v7.5h-7.5v5h7.5v7.5h5v-7.5h7.5Z"></path>
+<circle cx="70" cy="27.25" r="5"></circle>
+<circle cx="79" cy="35.75" r="5"></circle>
+<circle cx="37" cy="49.75" r="3.5"></circle>
+<circle cx="63" cy="49.75" r="3.5"></circle>
+<path d="M46.75,19.75a3,3,0,0,1,3-3h1.5a3,3,0,0,1,3,3v-1.5h-7.5Z"></path>
+<path d="M53.25,19.75a3,3,0,0,0-3-3h-1.5a3,3,0,0,0-3,3v-1.5h7.5Z" transform="translate(98.5 38) rotate(180)"></path>
+</g>
+</g>
+</svg>
+</div>
+<div class="absolute top-0 left-[65%] w-16 h-16 animate-fall" style="animation-delay: -3s; animation-duration: 27s;">
+<svg class="w-full h-full opacity-20 dark:opacity-10" viewBox="0 0 100 66" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#FF6F00" stroke-width="3">
+<path d="M72,13.25a24.25,24.25,0,0,0-46.42,7.5H19a17.25,17.25,0,0,0-2.31,34.33l.25.12h6.81a24.21,24.21,0,0,0,4.5,5H19A19.25,19.25,0,0,1,1,41.44a19.42,19.42,0,0,1,1-3.69C4.54,26.47,11,18.25,19,18.25h6.58A24.25,24.25,0,0,1,72,13.25Z" fill="#FFFFFF"></path>
+<path d="M28,51.75a24.25,24.25,0,0,0,46.42-7.5H81a17.25,17.25,0,0,0,2.31-34.33l-.25-.12H76.25a24.21,24.21,0,0,0-4.5-5H81A19.25,19.25,0,0,1,99,22.56a19.42,19.42,0,0,1-1,3.69c-2.54,11.28-9,19.5-17,19.5H74.42A24.25,24.25,0,0,1,28,51.75Z" fill="#FFFFFF"></path>
+<rect fill="#FFFFFF" height="27.5" rx="12" width="49" x="25.5" y="36.75"></rect>
+<g fill="#FFFFFF">
+<path d="M30,30.75h-7.5v-7.5h-5v7.5h-7.5v5h7.5v7.5h5v-7.5h7.5Z"></path>
+<circle cx="70" cy="27.25" r="5"></circle>
+<circle cx="79" cy="35.75" r="5"></circle>
+<circle cx="37" cy="49.75" r="3.5"></circle>
+<circle cx="63" cy="49.75" r="3.5"></circle>
+<path d="M46.75,19.75a3,3,0,0,1,3-3h1.5a3,3,0,0,1,3,3v-1.5h-7.5Z"></path>
+<path d="M53.25,19.75a3,3,0,0,0-3-3h-1.5a3,3,0,0,0-3,3v-1.5h7.5Z" transform="translate(98.5 38) rotate(180)"></path>
+</g>
+</g>
+</svg>
+</div>
+<div class="absolute top-0 left-[80%] w-28 h-28 animate-fall" style="animation-delay: 0s; animation-duration: 32s;">
+<svg class="w-full h-full opacity-20 dark:opacity-10" viewBox="0 0 100 66" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#FF6F00" stroke-width="3">
+<path d="M72,13.25a24.25,24.25,0,0,0-46.42,7.5H19a17.25,17.25,0,0,0-2.31,34.33l.25.12h6.81a24.21,24.21,0,0,0,4.5,5H19A19.25,19.25,0,0,1,1,41.44a19.42,19.42,0,0,1,1-3.69C4.54,26.47,11,18.25,19,18.25h6.58A24.25,24.25,0,0,1,72,13.25Z" fill="#FFFFFF"></path>
+<path d="M28,51.75a24.25,24.25,0,0,0,46.42-7.5H81a17.25,17.25,0,0,0,2.31-34.33l-.25-.12H76.25a24.21,24.21,0,0,0-4.5-5H81A19.25,19.25,0,0,1,99,22.56a19.42,19.42,0,0,1-1,3.69c-2.54,11.28-9,19.5-17,19.5H74.42A24.25,24.25,0,0,1,28,51.75Z" fill="#FFFFFF"></path>
+<rect fill="#FFFFFF" height="27.5" rx="12" width="49" x="25.5" y="36.75"></rect>
+<g fill="#FFFFFF">
+<path d="M30,30.75h-7.5v-7.5h-5v7.5h-7.5v5h7.5v7.5h5v-7.5h7.5Z"></path>
+<circle cx="70" cy="27.25" r="5"></circle>
+<circle cx="79" cy="35.75" r="5"></circle>
+<circle cx="37" cy="49.75" r="3.5"></circle>
+<circle cx="63" cy="49.75" r="3.5"></circle>
+<path d="M46.75,19.75a3,3,0,0,1,3-3h1.5a3,3,0,0,1,3,3v-1.5h-7.5Z"></path>
+<path d="M53.25,19.75a3,3,0,0,0-3-3h-1.5a3,3,0,0,0-3,3v-1.5h7.5Z" transform="translate(98.5 38) rotate(180)"></path>
+</g>
+</g>
+</svg>
+</div>
+<div class="absolute top-0 left-[95%] w-14 h-14 animate-fall" style="animation-delay: -8s; animation-duration: 26s;">
+<svg class="w-full h-full opacity-20 dark:opacity-10" viewBox="0 0 100 66" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#FF6F00" stroke-width="3">
+<path d="M72,13.25a24.25,24.25,0,0,0-46.42,7.5H19a17.25,17.25,0,0,0-2.31,34.33l.25.12h6.81a24.21,24.21,0,0,0,4.5,5H19A19.25,19.25,0,0,1,1,41.44a19.42,19.42,0,0,1,1-3.69C4.54,26.47,11,18.25,19,18.25h6.58A24.25,24.25,0,0,1,72,13.25Z" fill="#FFFFFF"></path>
+<path d="M28,51.75a24.25,24.25,0,0,0,46.42-7.5H81a17.25,17.25,0,0,0,2.31-34.33l-.25-.12H76.25a24.21,24.21,0,0,0-4.5-5H81A19.25,19.25,0,0,1,99,22.56a19.42,19.42,0,0,1-1,3.69c-2.54,11.28-9,19.5-17,19.5H74.42A24.25,24.25,0,0,1,28,51.75Z" fill="#FFFFFF"></path>
+<rect fill="#FFFFFF" height="27.5" rx="12" width="49" x="25.5" y="36.75"></rect>
+<g fill="#FFFFFF">
+<path d="M30,30.75h-7.5v-7.5h-5v7.5h-7.5v5h7.5v7.5h5v-7.5h7.5Z"></path>
+<circle cx="70" cy="27.25" r="5"></circle>
+<circle cx="79" cy="35.75" r="5"></circle>
+<circle cx="37" cy="49.75" r="3.5"></circle>
+<circle cx="63" cy="49.75" r="3.5"></circle>
+<path d="M46.75,19.75a3,3,0,0,1,3-3h1.5a3,3,0,0,1,3,3v-1.5h-7.5Z"></path>
+<path d="M53.25,19.75a3,3,0,0,0-3-3h-1.5a3,3,0,0,0-3,3v-1.5h7.5Z" transform="translate(98.5 38) rotate(180)"></path>
+</g>
+</g>
+</svg>
+</div>
+<div class="absolute top-0 left-[10%] w-20 h-20 animate-fall" style="animation-delay: -12s; animation-duration: 24s;">
+<svg class="w-full h-full opacity-20 dark:opacity-10" viewBox="0 0 100 66" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#FF6F00" stroke-width="3">
+<path d="M72,13.25a24.25,24.25,0,0,0-46.42,7.5H19a17.25,17.25,0,0,0-2.31,34.33l.25.12h6.81a24.21,24.21,0,0,0,4.5,5H19A19.25,19.25,0,0,1,1,41.44a19.42,19.42,0,0,1,1-3.69C4.54,26.47,11,18.25,19,18.25h6.58A24.25,24.25,0,0,1,72,13.25Z" fill="#FFFFFF"></path>
+<path d="M28,51.75a24.25,24.25,0,0,0,46.42-7.5H81a17.25,17.25,0,0,0,2.31-34.33l-.25-.12H76.25a24.21,24.21,0,0,0-4.5-5H81A19.25,19.25,0,0,1,99,22.56a19.42,19.42,0,0,1-1,3.69c-2.54,11.28-9,19.5-17,19.5H74.42A24.25,24.25,0,0,1,28,51.75Z" fill="#FFFFFF"></path>
+<rect fill="#FFFFFF" height="27.5" rx="12" width="49" x="25.5" y="36.75"></rect>
+<g fill="#FFFFFF">
+<path d="M30,30.75h-7.5v-7.5h-5v7.5h-7.5v5h7.5v7.5h5v-7.5h7.5Z"></path>
+<circle cx="70" cy="27.25" r="5"></circle>
+<circle cx="79" cy="35.75" r="5"></circle>
+<circle cx="37" cy="49.75" r="3.5"></circle>
+<circle cx="63" cy="49.75" r="3.5"></circle>
+<path d="M46.75,19.75a3,3,0,0,1,3-3h1.5a3,3,0,0,1,3,3v-1.5h-7.5Z"></path>
+<path d="M53.25,19.75a3,3,0,0,0-3-3h-1.5a3,3,0,0,0-3,3v-1.5h7.5Z" transform="translate(98.5 38) rotate(180)"></path>
+</g>
+</g>
+</svg>
+</div>
+<div class="absolute top-0 left-[40%] w-28 h-28 animate-fall" style="animation-delay: -10s; animation-duration: 29s;">
+<svg class="w-full h-full opacity-20 dark:opacity-10" viewBox="0 0 100 66" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#FF6F00" stroke-width="3">
+<path d="M72,13.25a24.25,24.25,0,0,0-46.42,7.5H19a17.25,17.25,0,0,0-2.31,34.33l.25.12h6.81a24.21,24.21,0,0,0,4.5,5H19A19.25,19.25,0,0,1,1,41.44a19.42,19.42,0,0,1,1-3.69C4.54,26.47,11,18.25,19,18.25h6.58A24.25,24.25,0,0,1,72,13.25Z" fill="#FFFFFF"></path>
+<path d="M28,51.75a24.25,24.25,0,0,0,46.42-7.5H81a17.25,17.25,0,0,0,2.31-34.33l-.25-.12H76.25a24.21,24.21,0,0,0-4.5-5H81A19.25,19.25,0,0,1,99,22.56a19.42,19.42,0,0,1-1,3.69c-2.54,11.28-9,19.5-17,19.5H74.42A24.25,24.25,0,0,1,28,51.75Z" fill="#FFFFFF"></path>
+<rect fill="#FFFFFF" height="27.5" rx="12" width="49" x="25.5" y="36.75"></rect>
+<g fill="#FFFFFF">
+<path d="M30,30.75h-7.5v-7.5h-5v7.5h-7.5v5h7.5v7.5h5v-7.5h7.5Z"></path>
+<circle cx="70" cy="27.25" r="5"></circle>
+<circle cx="79" cy="35.75" r="5"></circle>
+<circle cx="37" cy="49.75" r="3.5"></circle>
+<circle cx="63" cy="49.75" r="3.5"></circle>
+<path d="M46.75,19.75a3,3,0,0,1,3-3h1.5a3,3,0,0,1,3,3v-1.5h-7.5Z"></path>
+<path d="M53.25,19.75a3,3,0,0,0-3-3h-1.5a3,3,0,0,0-3,3v-1.5h7.5Z" transform="translate(98.5 38) rotate(180)"></path>
+</g>
+</g>
+</svg>
+</div>
+<div class="absolute top-0 left-[70%] w-14 h-14 animate-fall" style="animation-delay: -14s; animation-duration: 23s;">
+<svg class="w-full h-full opacity-20 dark:opacity-10" viewBox="0 0 100 66" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#FF6F00" stroke-width="3">
+<path d="M72,13.25a24.25,24.25,0,0,0-46.42,7.5H19a17.25,17.25,0,0,0-2.31,34.33l.25.12h6.81a24.21,24.21,0,0,0,4.5,5H19A19.25,19.25,0,0,1,1,41.44a19.42,19.42,0,0,1,1-3.69C4.54,26.47,11,18.25,19,18.25h6.58A24.25,24.25,0,0,1,72,13.25Z" fill="#FFFFFF"></path>
+<path d="M28,51.75a24.25,24.25,0,0,0,46.42-7.5H81a17.25,17.25,0,0,0,2.31-34.33l-.25-.12H76.25a24.21,24.21,0,0,0-4.5-5H81A19.25,19.25,0,0,1,99,22.56a19.42,19.42,0,0,1-1,3.69c-2.54,11.28-9,19.5-17,19.5H74.42A24.25,24.25,0,0,1,28,51.75Z" fill="#FFFFFF"></path>
+<rect fill="#FFFFFF" height="27.5" rx="12" width="49" x="25.5" y="36.75"></rect>
+<g fill="#FFFFFF">
+<path d="M30,30.75h-7.5v-7.5h-5v7.5h-7.5v5h7.5v7.5h5v-7.5h7.5Z"></path>
+<circle cx="70" cy="27.25" r="5"></circle>
+<circle cx="79" cy="35.75" r="5"></circle>
+<circle cx="37" cy="49.75" r="3.5"></circle>
+<circle cx="63" cy="49.75" r="3.5"></circle>
+<path d="M46.75,19.75a3,3,0,0,1,3-3h1.5a3,3,0,0,1,3,3v-1.5h-7.5Z"></path>
+<path d="M53.25,19.75a3,3,0,0,0-3-3h-1.5a3,3,0,0,0-3,3v-1.5h7.5Z" transform="translate(98.5 38) rotate(180)"></path>
+</g>
+</g>
+</svg>
+</div>
+<div class="absolute top-0 left-[85%] w-24 h-24 animate-fall" style="animation-delay: -11s; animation-duration: 31s;">
+<svg class="w-full h-full opacity-20 dark:opacity-10" viewBox="0 0 100 66" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="#FF6F00" stroke-width="3">
+<path d="M72,13.25a24.25,24.25,0,0,0-46.42,7.5H19a17.25,17.25,0,0,0-2.31,34.33l.25.12h6.81a24.21,24.21,0,0,0,4.5,5H19A19.25,19.25,0,0,1,1,41.44a19.42,19.42,0,0,1,1-3.69C4.54,26.47,11,18.25,19,18.25h6.58A24.25,24.25,0,0,1,72,13.25Z" fill="#FFFFFF"></path>
+<path d="M28,51.75a24.25,24.25,0,0,0,46.42-7.5H81a17.25,17.25,0,0,0,2.31-34.33l-.25-.12H76.25a24.21,24.21,0,0,0-4.5-5H81A19.25,19.25,0,0,1,99,22.56a19.42,19.42,0,0,1-1,3.69c-2.54,11.28-9,19.5-17,19.5H74.42A24.25,24.25,0,0,1,28,51.75Z" fill="#FFFFFF"></path>
+<rect fill="#FFFFFF" height="27.5" rx="12" width="49" x="25.5" y="36.75"></rect>
+<g fill="#FFFFFF">
+<path d="M30,30.75h-7.5v-7.5h-5v7.5h-7.5v5h7.5v7.5h5v-7.5h7.5Z"></path>
+<circle cx="70" cy="27.25" r="5"></circle>
+<circle cx="79" cy="35.75" r="5"></circle>
+<circle cx="37" cy="49.75" r="3.5"></circle>
+<circle cx="63" cy="49.75" r="3.5"></circle>
+<path d="M46.75,19.75a3,3,0,0,1,3-3h1.5a3,3,0,0,1,3,3v-1.5h-7.5Z"></path>
+<path d="M53.25,19.75a3,3,0,0,0-3-3h-1.5a3,3,0,0,0-3,3v-1.5h7.5Z" transform="translate(98.5 38) rotate(180)"></path>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<div class="layout-container flex h-full grow flex-col z-10">
+<div class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col w-full max-w-[1280px] flex-1">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-surface-light dark:border-surface-dark px-4 sm:px-6 py-4">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-text-primary-light dark:text-text-primary-dark">
+<div class="size-6 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight">GameRank</h2>
+</div>
+<nav class="hidden lg:flex items-center gap-9">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">ホーム</a>
+<a class="text-sm font-medium text-primary" href="#">ランキング</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">レビュー</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">ニュース</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<label class="relative flex-col min-w-40 !h-10 max-w-64 hidden sm:flex">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-text-secondary-light dark:text-text-secondary-dark flex bg-surface-light dark:bg-surface-dark items-center justify-center pl-3 rounded-l-lg">
+<span class="material-symbols-outlined !text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-primary-light dark:text-text-primary-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-surface-light dark:bg-surface-dark h-full placeholder:text-text-secondary-light dark:placeholder:text-text-secondary-dark px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal" placeholder="ゲームを検索..." value=""/>
+</div>
+</label>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar image" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCoOfEOjzswLI752j56FjvFJHHiiGYUvU9C-M_B71N2C4DAMyy4jqssgvjFGBhb9kbtai0wBN1GZbT9nZJR5W7hgNGc5kspNVaszGcWK0SvXFgsBtOnzzBCFzAxBxGmi6v8yR9hoMmfV555xJd6oMJ9WiUoJr_6ozDlSIj5lhgBRzE4S-iF-q4mtzsN9OaZpscgKD_-ByRkAAf7hgKyqxXr6lyuuA5KkkmJjx0TWn04ru6zzqygfCmKosP9YhnIwoBQDr-sBWA3JNY");'></div>
+</div>
+</header>
+<main class="flex-1 px-4 sm:px-6 py-8">
+<div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+<p class="text-3xl md:text-4xl font-black tracking-tighter min-w-72">今週の人気ゲームランキング</p>
+</div>
+<div class="flex flex-col md:flex-row gap-4 mb-6 justify-between items-center">
+<div class="flex gap-2 p-1 overflow-x-auto w-full md:w-auto">
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white px-4">
+<p class="text-sm font-medium">総合</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-light dark:bg-surface-dark hover:bg-gray-200 dark:hover:bg-gray-700 px-4 transition-colors">
+<p class="text-sm font-medium">RPG</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-light dark:bg-surface-dark hover:bg-gray-200 dark:hover:bg-gray-700 px-4 transition-colors">
+<p class="text-sm font-medium">シミュレーション</p>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-surface-light dark:bg-surface-dark hover:bg-gray-200 dark:hover:bg-gray-700 px-4 transition-colors">
+<p class="text-sm font-medium">パズル</p>
+</button>
+</div>
+<div class="flex gap-4 w-full md:w-auto">
+<div class="flex h-10 flex-1 items-center justify-center rounded-lg bg-surface-light dark:bg-surface-dark p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-background-light has-[:checked]:dark:bg-background-dark has-[:checked]:shadow-sm has-[:checked]:text-text-primary-light has-[:checked]:dark:text-text-primary-dark text-text-secondary-light dark:text-text-secondary-dark text-sm font-medium">
+<span class="material-symbols-outlined !text-[20px]">grid_view</span>
+<input checked="" class="invisible w-0" name="view-toggle" type="radio" value="カード表示"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-background-light has-[:checked]:dark:bg-background-dark has-[:checked]:shadow-sm has-[:checked]:text-text-primary-light has-[:checked]:dark:text-text-primary-dark text-text-secondary-light dark:text-text-secondary-dark text-sm font-medium">
+<span class="material-symbols-outlined !text-[20px]">list</span>
+<input class="invisible w-0" name="view-toggle" type="radio" value="リスト表示"/>
+</label>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<div class="flex flex-col gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-lg overflow-hidden">
+<div class="absolute top-2 left-2 bg-black/50 text-white text-lg font-bold w-10 h-10 flex items-center justify-center rounded-full">1</div>
+<img class="w-full h-full object-cover" data-alt="A futuristic knight standing in a vast, fantastical landscape for Elden World" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ2CTtoFoibo_xSdIXw0E_MFcWoQ7kRCql_x2nkLfKal-cvRH-NmwuXUNf7efosyPWvh3hKf4kB8CZB-Ci0fTD_z27e5JR1N1L8jEnkRQEb_9ln4BxVW631rhb2cjjidIshXWZxyoa7CTW8aauY0xWPKOelPX1qbJnQvKBE2pGb4TsUYa11l_oswKOJUlYFitd43pvIfpfug_Q6ZOafo5eFWEZ5-ec2YczKTiqg6JgYmuewSUibds6VpxULUnaKx0p-J-hhk0-Ci8"/>
+</div>
+<div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-lg font-bold">エルデンワールド</p>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark mb-1">オープンワールドRPG</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="text-sm font-bold text-text-primary-light dark:text-text-primary-dark">4.9</p>
+</div>
+</div>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark leading-relaxed mt-2">広大な世界を探索しよう。自由度の高い冒険が君を待っている。</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-lg overflow-hidden">
+<div class="absolute top-2 left-2 bg-black/50 text-white text-lg font-bold w-10 h-10 flex items-center justify-center rounded-full">2</div>
+<img class="w-full h-full object-cover" data-alt="A spaceship flying through a colorful nebula for Starfall Saga" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy04zlSY6xD5jK09SuuQLMc-UUy2Z05Z1oGYa2Qh0ZZbyrFOc_oFFhgdPfnQ5gzJjQkdDjlXWyfXWrAg0cqRw-9vzXj72s4hqh8LJLI4MAom7XCrntkuni2LJoHzq3-FQ2YMmrO_7soSg7WcnRbiNGtUoFqOGOGSLyVnR_YwonqKXVa5if6N7mLxeNl-4fn66IiuUDMmPsOmJUO197F2WMMWSBvP2LVgvq7iYbIdgdzq4Sc2DhSYbi6zhAGTuAwZCeYJV3iSyWXnM"/>
+</div>
+<div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-lg font-bold">スターフォール・サーガ</p>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark mb-1">SFアドベンチャー</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="text-sm font-bold text-text-primary-light dark:text-text-primary-dark">4.8</p>
+</div>
+</div>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark leading-relaxed mt-2">宇宙を舞台にした壮大なSFアドベンチャー。未知の惑星を探索せよ。</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-lg overflow-hidden">
+<div class="absolute top-2 left-2 bg-black/50 text-white text-lg font-bold w-10 h-10 flex items-center justify-center rounded-full">3</div>
+<img class="w-full h-full object-cover" data-alt="An ancient clock with glowing hands against a dramatic sky for Chrono Trigger Remake" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyTlVDcIW9U3GSKZ0ZxSdp8e8EAJ3kOnyYbjNr_YWnxR6RaBMngO3KECdc98bc2wZyig_rI8mHydxVtCGrL0YKy25_K5IvbApshVWlPZqnueKxFg1oasYZlBFVSSHg15omvDqHvlfB0gUDAJQt7dlszQh4IzDsyRm8quV5EfjdBr23jAodecujedTh5AKMWVNjiEaRK7i7kNV9FyR5aivbPApUelc8bwiGztpYouR14zfeWgJmG_ppL7EnCbM0BqxFnjbiCCy3ZQQ"/>
+</div>
+<div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-lg font-bold">クロノ・トリガーリメイク</p>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark mb-1">RPG</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="text-sm font-bold text-text-primary-light dark:text-text-primary-dark">4.8</p>
+</div>
+</div>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark leading-relaxed mt-2">伝説の名作が現代のグラフィックで蘇る。時を超えた冒険へ。</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-lg overflow-hidden">
+<div class="absolute top-2 left-2 bg-black/50 text-white text-lg font-bold w-10 h-10 flex items-center justify-center rounded-full">4</div>
+<img class="w-full h-full object-cover" data-alt="A neon-lit futuristic city street at night for Cyberpunk 2078" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz9Y3XAHUcvvd-mOmU0KUDSujGr-lGx3ImLIpSXiVgSffbZ5YWhPSxnIaz5V8yNe269_M5YylLvqh5PuQoWhlT22hylnpRn9d8kF4zg21US10hmEUZYmqjXgPkbGjasYWINTNxtxrQ9k1_F-vfXh4V6Dnn3gNPHRwc4-kNE7m8tyBKmthjsCW1GRbB8ySnU3M_pdL0YyLSv95ihxgw_fWLkukldcjDojo5rWSQVu7riEG86Uls7rn9lEDWBPUAo7fJNG4MaMzqIjI"/>
+</div>
+<div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-lg font-bold">サイバーパンク2078</p>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark mb-1">アクションRPG</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="text-sm font-bold text-text-primary-light dark:text-text-primary-dark">4.7</p>
+</div>
+</div>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark leading-relaxed mt-2">未来都市ナイトシティを駆け巡るアクションRPG。伝説を創り出せ。</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-lg overflow-hidden">
+<div class="absolute top-2 left-2 bg-black/50 text-white text-lg font-bold w-10 h-10 flex items-center justify-center rounded-full">5</div>
+<img class="w-full h-full object-cover" data-alt="A mysterious underwater cave with light filtering from above for Oceans Echo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEhAJQhQZsVx_WvTOHGciX7ng1YiWKMacct1WisQ34dMat92SDxhzj1a1P3zq9GD6bejw0XCSKa8hv85h36zqo6D8VJATTIk06o_q4hdJhwb-2rGntGO6LsOkQT_dwB4AVR9B1LHGL5Rz7u3OGBkn8kfUQrqyCbMS1k1DCT8xZ1_jCzerURpbrSaLLhSNe3xTTIK8BwLIobBAT4f8i-JxafuNQUwQt5bTKh-wyhfAwGy8Rg_Q5VGl0YgnXesMvvImeIIXPJvC0vNc"/>
+</div>
+<div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-lg font-bold">オーシャンズ・エコー</p>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark mb-1">サバイバル</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="text-sm font-bold text-text-primary-light dark:text-text-primary-dark">4.7</p>
+</div>
+</div>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark leading-relaxed mt-2">深海を探索するサバイバルゲーム。未知の生物と古代の謎が待つ。</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-lg overflow-hidden">
+<div class="absolute top-2 left-2 bg-black/50 text-white text-lg font-bold w-10 h-10 flex items-center justify-center rounded-full">6</div>
+<img class="w-full h-full object-cover" data-alt="A Viking warrior standing on a cliff overlooking a fjord for Valhalla Knights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx6r-mbw6nq9gifl7fRC1N06Pnwq-XMFLL1GESZHovNAzBGpgSWUUSXT8kN2ZYiRdoot1uyTIbJ4HdXHmU_YnHCz-UHhnGZWcCwPzsbsl97wqO-5Wpr9UKUHurF9KCfwPaRV8gAK9dLIy5K3fge4d5-PSTFZKfm3vZVHjCshgG5hbwwNfNbprafLDFMwRSp2hJebTxajUfwr8CK7yISOwy3d82UbrxHtSIUiNa9MVNfqp8hQKSZ-AB3qOEoxp2ix5G1pGmBdmhEUY"/>
+</div>
+<div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-lg font-bold">ヴァルハラ・ナイツ</p>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark mb-1">アクション</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="text-sm font-bold text-text-primary-light dark:text-text-primary-dark">4.6</p>
+</div>
+</div>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark leading-relaxed mt-2">北欧神話をベースにしたアクション。神々の力を借りて戦え。</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-lg overflow-hidden">
+<div class="absolute top-2 left-2 bg-black/50 text-white text-lg font-bold w-10 h-10 flex items-center justify-center rounded-full">7</div>
+<img class="w-full h-full object-cover" data-alt="An abstract representation of interdimensional chains for Astral Chain 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBS7Yi9dGRg9M6TwRRxmjCOFhUipqlh9XE_L2j-iQNymnqLQopau1cP44reTjFsrYz3M7q4J7GUCEy5wstNLkmVUNbxy1bGtB55AcQ0uH65K33Aryx3Pl_hZcrKE-32bC2x8cGi5RtJOs3U7ihTt5sy699Pf1Pp2ti7BZNxXSgz0k1rP5C0BzRuNZY-Sb6gNkDeNJV9X3R-3F2yU1dIGF71c32vzdF6LxoQmZfwRRqhC2e8z1V7CLDWdVX40Rm35AFUleTGCSFSlt8"/>
+</div>
+<div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-lg font-bold">アストラル・チェイン2</p>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark mb-1">アクション</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="text-sm font-bold text-text-primary-light dark:text-text-primary-dark">4.6</p>
+</div>
+</div>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark leading-relaxed mt-2">異世界からの侵略者と戦うスタイリッシュアクションが再び。</p>
+</div>
+</div>
+<div class="flex flex-col gap-3 rounded-xl bg-surface-light dark:bg-surface-dark p-4 group transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+<div class="relative w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-lg overflow-hidden">
+<div class="absolute top-2 left-2 bg-black/50 text-white text-lg font-bold w-10 h-10 flex items-center justify-center rounded-full">8</div>
+<img class="w-full h-full object-cover" data-alt="A fierce red dragon breathing fire in a rocky canyon for Dragons Dogma 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHi2-CEvFQujqt6rJ6dFDHJGYoOQxQcbTapFyVq0cF3FN7SQZUtAtS8TgLMwih9WsHL_UMv-My3PqcspMfD2Dz28VH5fP6pFwmuKxAUdpNexT5R-d1jkZUqlO9MkpJdrrcygwv_eZmdNc2M7TABCFsoNncnn_wk87RMbG6iLUCxgUgZ9bnkxXrRqBpuk_RbWZtQItL1pGwS5uh7KW_KWYiui32jKp8YRSrmvHCFI0F9mpEBHoe3hJsh2OId-_-U6qBbvviLqtz0pQ"/>
+</div>
+<div>
+<div class="flex justify-between items-start">
+<div>
+<p class="text-lg font-bold">ドラゴンズ・ドグマ3</p>
+<p class="text-xs text-text-secondary-light dark:text-text-secondary-dark mb-1">ファンタジーRPG</p>
+</div>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined !text-base" style="font-variation-settings: 'FILL' 1;">star</span>
+<p class="text-sm font-bold text-text-primary-light dark:text-text-primary-dark">4.5</p>
+</div>
+</div>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark leading-relaxed mt-2">ドラゴンとの壮絶な戦いを描くファンタジー。新たな冒険が始まる。</p>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-12">
+<nav class="flex items-center gap-2">
+<button class="flex items-center justify-center size-10 rounded-lg bg-surface-light dark:bg-surface-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-text-secondary-light dark:text-text-secondary-dark" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-lg bg-primary text-white font-bold">1</button>
+<button class="flex items-center justify-center size-10 rounded-lg bg-surface-light dark:bg-surface-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors font-medium">2</button>
+<button class="flex items-center justify-center size-10 rounded-lg bg-surface-light dark:bg-surface-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors font-medium">3</button>
+<span class="text-text-secondary-light dark:text-text-secondary-dark">...</span>
+<button class="flex items-center justify-center size-10 rounded-lg bg-surface-light dark:bg-surface-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors font-medium">10</button>
+<button class="flex items-center justify-center size-10 rounded-lg bg-surface-light dark:bg-surface-dark hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-text-secondary-light dark:text-text-secondary-dark">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</nav>
+</div>
+</main>
+<footer class="mt-16 border-t border-solid border-surface-light dark:border-surface-dark px-4 sm:px-6 py-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="size-6 text-primary">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold">GameRank</h2>
+</div>
+<div class="flex flex-wrap justify-center gap-6 text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark">
+<a class="hover:text-primary transition-colors" href="#">利用規約</a>
+<a class="hover:text-primary transition-colors" href="#">プライバシーポリシー</a>
+<a class="hover:text-primary transition-colors" href="#">お問い合わせ</a>
+</div>
+<p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">© 2024 GameRank. All Rights Reserved.</p>
+</div>
+</footer>
+</div>
+</div>
+</div>
+</div></body></html>
